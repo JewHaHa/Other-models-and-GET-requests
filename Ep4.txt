@@ -1,0 +1,145 @@
+1.สร้าง category.js,order.js,product.js ที่ โฟลเดอร์  models
+
+2.สร้าง categories.js,orders.js,products.js ที่ โฟลเดอร์  routes
+
+3.เสร็จ routes ที่ ไฟล์  index.js 
+
+CODE
+
+const pages = require("./routes/pages");
+const categories = require("./routes/categories");
+const products = require("./routes/products");
+const orders = require("./routes/orders");
+
+app.use("/pages", pages);
+app.use("/categories", categories);
+app.use("/products", products);
+app.use("/orders", orders);
+
+
+code category.js
+
+const mongoose = require("mongoose");
+
+// Category Schema
+const CategorySchema = mongoose.Schema({
+
+    name: {
+        type: String,
+    },
+    slug: {
+        type: String,
+    },
+
+});
+
+const Category = (module.exports = mongoose.model("Category", CategorySchema));
+
+
+code oder.js
+
+const mongoose = require("mongoose");
+
+// Order Schema
+const OrderSchema = mongoose.Schema({
+
+    name: {
+        type: String,
+    },
+    email: {
+        type: String,
+    },
+    address: {
+        type: String,
+    },
+    cart: {
+        type: String,
+    },
+    total: {
+        type: Number,
+    },
+
+});
+
+const Order = (module.exports = mongoose.model("Order", OrderSchema));
+
+code product.js
+
+const mongoose = require("mongoose");
+
+// Product Schema
+const ProductSchema = mongoose.Schema({
+
+    name: {
+        type: String,
+    },
+    category: {
+        type: String,
+    },
+    description: {
+        type: String,
+    },
+    image: {
+        type: String,
+    },
+    price: {
+        type: Number,
+    },
+
+});
+
+const Product = (module.exports = mongoose.model("Product", ProductSchema));
+
+code categories.js
+
+const express = require("express");
+const router = express.Router();
+
+const Category = require('../models/category');
+
+// GET categories
+router.get("/", (req, res) => {
+    Category.find({}, (error, categories) => {
+        if (error) console.log(error);
+        res.json(categories);
+    });
+});
+
+module.exports = router;
+
+code orders.js
+
+const express = require("express");
+const router = express.Router();
+
+const Order = require('../models/order');
+
+// GET orders
+router.get("/", (req, res) => {
+    Order.find({}, (error, orders) => {
+        if (error) console.log(error);
+        res.json(orders);
+    });
+});
+
+module.exports = router;
+
+codee products.js
+
+const express = require("express");
+const router = express.Router();
+
+const Product = require('../models/product');
+
+// GET products
+router.get("/", (req, res) => {
+    Product.find({}, (error, products) => {
+        if (error) console.log(error);
+        res.json(products);
+    });
+});
+
+module.exports = router;
+
+
+

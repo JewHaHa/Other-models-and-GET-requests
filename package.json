@@ -1,0 +1,20 @@
+{
+  "name": "ep_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "mongoose": "^6.0.5"
+  }
+}
